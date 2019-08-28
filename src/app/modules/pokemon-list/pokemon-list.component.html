@@ -1,0 +1,11 @@
+<app-widget-preloader [preload]="preload"></app-widget-preloader>
+<div class="row count" *ngIf="!preload">
+  <div class="col s12">
+    <p style="margin: 0px;">Total: {{pokemon?.count}}</p>
+  </div>
+</div>
+
+<app-widget-pokemon-list [listLeft]="listLeft" [listRight]="listRight"></app-widget-pokemon-list>
+<div class="btn-add center" *ngIf="pokemon?.next!=null">
+  <a class="waves-effect waves-light btn red" (click)="getPokemonFromApi()"><i class="material-icons left">loop</i> Load More</a>
+</div>

@@ -1,0 +1,64 @@
+<app-widget-preloader [preload]="preload"></app-widget-preloader>
+<div class="container" *ngIf="!preload">
+  <div class="row">
+    <div class="col s12 m6">
+      <img src="{{image}}" alt="">
+      <img src="{{image}}" alt="">
+      <img src="{{image}}" alt="">
+      <img src="{{image}}" alt="">
+    </div>
+    <div class="col s12 m6">
+      <h4>{{pokemon.name}} #{{getFormatId(pokemon.id)}}</h4>
+      <table>
+        <tr title="Types: {{types}}">
+          <th>Types</th>
+          <td>{{types}}</td>
+        </tr>
+        <tr title="Height: {{pokemon.height}}">
+          <th>Height</th>
+          <td>{{pokemon.height}}</td>
+        </tr>
+        <tr title="Weight: {{pokemon.weight}}">
+          <th>Weight</th>
+          <td>{{pokemon.weight}}</td>
+        </tr>
+      </table>
+      <div class="btn-add">
+        <a class="waves-effect waves-light btn" [routerLink]="[ '/']" title="list Pokemon"><i class="material-icons left">list_alt</i> list</a>
+        <a class="waves-effect waves-light btn red" (click)="addToMyPokemon()"><i class="material-icons left">sports_baseball</i> Add to My Collection</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <h4>Moves</h4>
+      <div class="scroll">
+        <table>
+          <ng-container *ngFor="let item of pokemon.moves">
+            <tr title="{{item.move.name}}">
+              <td>{{item.move.name}}</td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <h4>Stats</h4>
+      <div class="scroll">
+        <table>
+          <ng-container *ngFor="let item of pokemon.stats">
+            <tr title="{{item.stat.name}}: {{item.base_stat}}">
+              <th style="width: 50%">{{item.stat.name}}</th>
+              <td style="width: 30%">
+                <div class="progress">
+                  <div class="determinate" [ngStyle]="{'width': item.base_stat+'%'}"></div>
+                </div>
+              </td>
+              <td style="width: 20%">{{item.base_stat}}</td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

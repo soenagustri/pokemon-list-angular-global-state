@@ -1,0 +1,8 @@
+<ul class="collection">
+  <li class="collection-item">
+    <div>
+      <a [routerLink]="[ '/pokemon', pokemon.name ]">{{pokemon.name}}</a>
+      <a href="javascript:" (click)="onDelete()" class="secondary-content" *ngIf="removeBtn"><i class="material-icons">delete_forever</i></a>
+    </div>
+  </li>
+</ul>
