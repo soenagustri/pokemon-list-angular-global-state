@@ -1,4 +1,5 @@
+export type positionType = 'left' | 'right';
 export interface PokemonButtonAction {
-    position: string;
+    position: positionType;
     index: number;
 }

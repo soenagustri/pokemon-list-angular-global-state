@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PokemonName } from 'src/app/models/detail/pokemon-name';
-import { PokemonButtonAction } from '../widget-pokemon-name/pokemon-button-action';
+import { MyPokemon } from 'src/app/models/my-pokemon';
 
 @Component({
   selector: 'app-widget-pokemon-list',
@@ -8,10 +7,10 @@ import { PokemonButtonAction } from '../widget-pokemon-name/pokemon-button-actio
   styleUrls: ['./widget-pokemon-list.component.css']
 })
 export class WidgetPokemonListComponent implements OnInit {
-  @Input() listLeft: Array<PokemonName> = [];
-  @Input() listRight: Array<PokemonName> = [];
+  @Input() listLeft: Array<MyPokemon> = [];
+  @Input() listRight: Array<MyPokemon> = [];
   @Input() removeBtn: boolean = false;
-  @Output() delete = new EventEmitter<PokemonButtonAction>();
+  @Output() delete = new EventEmitter<MyPokemon>();
 
   constructor() { }
 
@@ -19,8 +18,6 @@ export class WidgetPokemonListComponent implements OnInit {
   }
 
   onDelete(event) {
-    console.log(event);
-    
     this.delete.emit(event);
   }
 

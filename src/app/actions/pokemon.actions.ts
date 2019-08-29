@@ -14,7 +14,7 @@ export class AddPokemon implements Action {
 export class RemovePokemon implements Action {
     readonly type = REMOVE_POKEMON;
 
-    constructor(public payload: number) { }
+    constructor(public payload: MyPokemon) { }
 }
 
 export type Actions = AddPokemon | RemovePokemon

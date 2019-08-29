@@ -12,19 +12,24 @@ import { PokemonButtonAction } from 'src/app/widgets/widget-pokemon-name/pokemon
   styleUrls: ['./my-pokemon.component.css']
 })
 export class MyPokemonComponent implements OnInit {
-
+  count = 0;
   mypokemons: Observable<MyPokemon[]>;
   listLeft: MyPokemon[] = [];
   listRight: MyPokemon[] = [];
 
   constructor(
     private store: Store<AppState>
-  ) {
-    this.mypokemons = store.select('mypokemons');
-  }
+  ) {}
 
   ngOnInit() {
+    this.splitPokemon();
+  }
+  splitPokemon() {
+    this.listLeft = [];
+    this.listRight = [];
+    this.mypokemons = this.store.select('mypokemons');
     this.mypokemons.forEach( pokemon => {
+      this.count = pokemon.length;
       let index = 1;
       pokemon.forEach( val => {
         if (index % 2 != 0) {
@@ -37,17 +42,9 @@ export class MyPokemonComponent implements OnInit {
     });
   }
 
-  deleteMyPokemon(index) {
-    this.store.dispatch(new PokemonActions.RemovePokemon(index));
-  }
-
-  onDelete(event: PokemonButtonAction) {
-    if (event.position=='left') {
-      console.log("kiri: " + event.position);
-    } else {
-      console.log(event.position);
-      
-    }
+  onDelete(event: MyPokemon) {
+    this.store.dispatch(new PokemonActions.RemovePokemon(event));
+    this.splitPokemon(); 
   }
 
 }

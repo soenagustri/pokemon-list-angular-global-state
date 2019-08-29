@@ -17,7 +17,9 @@ export function reducer(state: MyPokemon[] = [], action: PokemonAction.Actions) 
                 action.payload
             ];
         case PokemonAction.REMOVE_POKEMON:
-            state.splice(action.payload, 1);
+            state = state.filter(val => val.alias!=action.payload.alias);
+            console.log(state);
+            
             return state;
         default:
             return state;

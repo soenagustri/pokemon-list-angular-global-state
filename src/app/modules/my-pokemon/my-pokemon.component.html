@@ -1,3 +1,14 @@
 <div class="container">
-  <app-widget-pokemon-list [listLeft]="listLeft" [listRight]="listRight" [removeBtn]="'true'" (delete)="onDelete($event)"></app-widget-pokemon-list>
+  <div class="row count">
+    <div class="col s12">
+      <a class="waves-effect waves-light" [routerLink]="[ '/']" title="list Pokemon"><i class="material-icons left">list_alt</i> back to list</a>
+      <!-- <div class="left">
+      </div> -->
+      <div class="right">
+        <p style="margin: 0px 0px 0px;">Total My Pokemon: {{count}}</p>
+      </div>
+    </div>
+  </div>
+  <app-widget-pokemon-list [listLeft]="listLeft" [listRight]="listRight" [removeBtn]="'true'"
+    (delete)="onDelete($event)"></app-widget-pokemon-list>
 </div>

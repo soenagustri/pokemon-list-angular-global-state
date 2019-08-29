@@ -2,13 +2,13 @@
   <div class="col s6">
     <ng-container *ngFor="let item of listLeft; let i=index">
       <app-widget-pokemon-name [pokemon]="item" [removeBtn]="removeBtn" 
-      [position]="'left'" [index]="i" (delete)="onDelete($event)"></app-widget-pokemon-name>
+       (delete)="onDelete($event)"></app-widget-pokemon-name>
     </ng-container>
   </div>
   <div class="col s6">
     <ng-container *ngFor="let item of listRight; let i=index">
       <app-widget-pokemon-name [pokemon]="item" [removeBtn]="removeBtn"
-      [position]="'right'" [index]="i" (delete)="onDelete($event)"></app-widget-pokemon-name>
+       (delete)="onDelete($event)"></app-widget-pokemon-name>
     </ng-container>
   </div>
 </div>
